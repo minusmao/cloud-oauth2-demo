@@ -1,0 +1,17 @@
+server:
+  port: 20200
+spring:
+  application:
+    name: CLOUD-USER
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        group: CLOUD_OAUTH2_DEMO
+        namespace: f48d3e51-a720-40a6-8155-8bd6a175accc
+      config:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        namespace: f48d3e51-a720-40a6-8155-8bd6a175accc
+        group: CLOUD_OAUTH2_DEMO
+        file-extension: yml
+        refresh-enabled: true

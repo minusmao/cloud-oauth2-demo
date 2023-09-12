@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        # auth router
+        - id: auth_router
+          uri: lb://CLOUD-AUTH
+          predicates:
+            - Path=/oauth/**
+        # user router
+        - id: user_router
+          uri: lb://CLOUD-USER
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1   #去掉请求前缀filter    int数字  1 去掉一级   2 去掉两级

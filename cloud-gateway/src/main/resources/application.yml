@@ -1,6 +1,22 @@
+auth:
+  jwt-signing-key: 123456
 spring:
   cloud:
     gateway:
+      globalcors: #全局的跨域处理
+        add-to-simple-url-handler-mapping: true #解决optoins请求被拦截的问题
+        corsConfigurations:
+          '[/**]':
+            #允许在请求中携带的头信息
+            allowedHeaders: "*"
+            #允许哪些网站跨域
+            allowedOrigins: "*"
+            allowed-methods: #允许跨域请求的方式
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
       routes:
         # auth router
         - id: auth_router
@@ -13,7 +29,10 @@ spring:
           predicates:
             - Path=/api/user/**
           filters:
-            - StripPrefix=1   #去掉请求前缀filter    int数字  1 去掉一级   2 去掉两级
+            - StripPrefix=1   # 去掉请求前缀filter    int数字  1 去掉一级   2 去掉两级
+          metadata:    # 设置负载均衡策略（默认轮询，RoundRobinRule）
+            ribbon:
+              NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
         # resource router
         - id: resource_router
           uri: lb://CLOUD-RESOURCE
@@ -21,3 +40,4 @@ spring:
             - Path=/api/resource/**
           filters:
             - StripPrefix=1
+            - Token

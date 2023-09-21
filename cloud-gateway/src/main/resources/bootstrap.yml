@@ -9,10 +9,10 @@ spring:
       server-addr: localhost:8848
       discovery:
         group: CLOUD_OAUTH2_DEMO
-        namespace: f48d3e51-a720-40a6-8155-8bd6a175accc
+        namespace: 3cd5baf0-a0c2-4e0c-95e2-d25273b15ced
       config:
         server-addr: ${spring.cloud.nacos.server-addr}
-        namespace: f48d3e51-a720-40a6-8155-8bd6a175accc
+        namespace: 3cd5baf0-a0c2-4e0c-95e2-d25273b15ced
         group: CLOUD_OAUTH2_DEMO
         file-extension: yml
         refresh-enabled: true

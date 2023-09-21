@@ -14,3 +14,10 @@ spring:
             - Path=/api/user/**
           filters:
             - StripPrefix=1   #去掉请求前缀filter    int数字  1 去掉一级   2 去掉两级
+        # resource router
+        - id: resource_router
+          uri: lb://CLOUD-RESOURCE
+          predicates:
+            - Path=/api/resource/**
+          filters:
+            - StripPrefix=1

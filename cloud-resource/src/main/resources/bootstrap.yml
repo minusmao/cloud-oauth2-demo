@@ -1,8 +1,8 @@
 server:
-  port: 20100
+  port: 20300
 spring:
   application:
-    name: CLOUD-AUTH
+    name: CLOUD-RESOURCE
   cloud:
     nacos:
       server-addr: localhost:8848

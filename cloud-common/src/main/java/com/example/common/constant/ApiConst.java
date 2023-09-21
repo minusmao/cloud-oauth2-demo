@@ -9,4 +9,6 @@ public class ApiConst {
 
     public static final String CLOUD_USER_API = "/user";
 
+    public static final String CLOUD_RESOURCE_API = "/resource";
+
 }

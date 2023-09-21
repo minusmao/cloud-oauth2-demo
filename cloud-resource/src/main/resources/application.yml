@@ -1,0 +1,5 @@
+auth:
+  jwt-signing-key: 123456
+logging:
+  level:
+    com.example.user.client: debug

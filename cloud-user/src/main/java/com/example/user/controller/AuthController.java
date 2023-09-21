@@ -1,7 +1,8 @@
 package com.example.user.controller;
 
+import com.example.common.constant.ApiConst;
 import com.example.user.model.OAuthTokenDTO;
-import com.example.user.service.UserService;
+import com.example.user.service.SysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -17,11 +18,11 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(tags = "用户相关接口")
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping(ApiConst.CLOUD_USER_API + "/auth")
+public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private SysUserService sysUserService;
 
     @ApiOperation("用户登录")
     @PostMapping("/login")
@@ -29,7 +30,7 @@ public class UserController {
             @ApiParam("用户名") @RequestParam String username,
             @ApiParam("密码") @RequestParam String password
     ) {
-        return userService.login(username, password);
+        return sysUserService.login(username, password);
     }
 
     @ApiOperation("用户信息")

@@ -70,7 +70,7 @@ public class JwtResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/login", "/user/register").permitAll()
+                .antMatchers("/user/auth/**", "/auth/user/**").permitAll()
                 .antMatchers("/**").authenticated();
     }
 

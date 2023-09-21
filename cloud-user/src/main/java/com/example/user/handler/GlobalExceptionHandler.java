@@ -51,10 +51,18 @@ public class GlobalExceptionHandler {
         return map;
     }
 
+    // 系统异常
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(Exception.class)
+    public Map<String, String> handler(Exception e) {
+        logger.error("运行时异常：{}", e.getMessage());
+        return exceptionResult(e.getMessage());
+    }
+
     // 运行时异常
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(RuntimeException.class)
-    public Map<String, String> handler(Exception e) {
+    public Map<String, String> handler(RuntimeException e) {
         logger.error("运行时异常：{}", e.getMessage());
         return exceptionResult(e.getMessage());
     }
